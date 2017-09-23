@@ -4,12 +4,12 @@
 ; Practical Work #1
 ;------------------------------------------------------
 ; This is a source file of the program which finds the
-; maximal element from the given array of numbers.
+; minimal element from the given array of numbers.
 #include "p16f84.inc" 
 
 c_adr set 0x30  ; the starting address of the array, a constant
 v_ptr equ 0x2F  ; the pointer to the current element in array, a variable
-v_min equ 0x2E  ; the maximal number in array, a variable
+v_min equ 0x2E  ; the minimal number in array, a variable
 c_num set 0x14   ; the number of elements in array, a constant 
 
 ; The allocation of variables in Data Memory:

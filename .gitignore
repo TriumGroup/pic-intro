@@ -23,4 +23,3 @@ disassembly/
 *.HEX
 *.cof
 *.err
-*.mcw

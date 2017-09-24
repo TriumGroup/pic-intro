@@ -8,8 +8,8 @@
 c_array_base set 0x10
 c_elements_count set 0xA
 
-v_max_ptr equ 0x0C
-v_ptr equ 0x0D
+v_main_left equ 0x0C
+v_inner_left equ 0x0D
 
 v_previous equ 0x0E
 v_swap_tmp equ 0x0F
@@ -17,11 +17,11 @@ v_swap_tmp equ 0x0F
 BEGIN:
 	BCF STATUS, RP0
 	MOVLW c_elements_count-1
-	MOVWF v_max_ptr
+	MOVWF v_main_left
 
 MAIN_LOOP:
-	MOVF v_max_ptr, W
-	MOVWF v_ptr
+	MOVF v_main_left, W
+	MOVWF v_inner_left
 	MOVLW c_array_base-1
 	MOVWF FSR
 
@@ -49,12 +49,11 @@ SWAP:
 	MOVWF INDF
 
 SKIP:
-	DECFSZ v_ptr, F
+	DECFSZ v_inner_left, F
 	GOTO INNER_LOOP
 
 MAIN_LOOP_END:
-	DECFSZ v_max_ptr, F
-	
+	DECFSZ v_main_left, F
 	GOTO MAIN_LOOP
 
 	END
